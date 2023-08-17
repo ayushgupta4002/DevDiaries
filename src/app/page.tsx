@@ -1,17 +1,40 @@
-import Image from 'next/image'
-
+import Image from "next/image";
+import styles from "./Home.module.css";
+import MainNav from "./Components/MainNav";
+import MainBanner from "./Components/MainBanner";
+import MainProductCard from "./Components/MainProductCard";
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          FlipKart Grid Let's Go&nbsp;
-          
-        </p>
-        
+    <main className="flex min-h-screen bg-[#f2f2f2] flex-col ">
+      <MainNav></MainNav>
+      <MainBanner></MainBanner>
+
+      <div>
+        <div className="text-8xl  tracking-wide font-bold font-sans drop-shadow-2xl shadow-black pl-[3vw]">
+          Your One Stop{" "}
+          <span className="text-white drop-shadow-[0_1.2px_1.2px_rgba(0.8,0,0,0.8)]">
+            Solution
+          </span>{" "}
+          !!
+        </div>
       </div>
 
+      <div className="mt-[9vh] pl-[3vw] mr-[5vw] flex flex-row flex-wrap justify-between">
+        <MainProductCard></MainProductCard>
 
+
+
+        <MainProductCard></MainProductCard>
+
+        <MainProductCard></MainProductCard>
+
+        <MainProductCard></MainProductCard>
+
+        <MainProductCard></MainProductCard>
+
+        
+   
+      </div>
     </main>
-  )
+  );
 }

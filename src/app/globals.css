@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.font-cal {
+    font-family: var(--font-cal),ui-serif,Georgia,Cambria,times new roman,Times,serif;
+}

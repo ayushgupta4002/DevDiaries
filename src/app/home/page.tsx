@@ -2,9 +2,11 @@ import Image from "next/image";
 import Banner from "../Components/Banner";
 import Product from "../Components/Product";
 import SuggestedCard from "../Components/SuggestedCard";
+import Navbar from "../Components/Navbar";
 function home() {
   return (
     <div className="h-fit">
+      <Navbar></Navbar>
       <Banner></Banner>
       <div className="flex flex-row">
         <div className=" flex flex-row justify-between flex-wrap	mt-7 max-w-[63vw] ml-5">
