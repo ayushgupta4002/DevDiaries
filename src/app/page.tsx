@@ -19,22 +19,16 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-[9vh] pl-[3vw] mr-[5vw] flex flex-row flex-wrap justify-between">
+      <div className="mt-[9vh] pl-[3vw]  flex flex-row gap-[3vw] flex-wrap ">
         <MainProductCard></MainProductCard>
-
-
-
         <MainProductCard></MainProductCard>
-
         <MainProductCard></MainProductCard>
-
         <MainProductCard></MainProductCard>
-
         <MainProductCard></MainProductCard>
-
-        
-   
+        <MainProductCard></MainProductCard>
+    
       </div>
+
     </main>
   );
 }
