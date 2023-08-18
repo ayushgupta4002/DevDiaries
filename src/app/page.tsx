@@ -18,14 +18,42 @@ export default function Home() {
           !!
         </div>
       </div>
+      <div className="mt-[9vh] text-center   font-medium  tracking-wide  font-mono  text-3xl	">
+        - Highly Rated -
 
-      <div className="mt-[9vh] pl-[3vw]  flex flex-row gap-[3vw] flex-wrap ">
+      </div>
+
+      <div className="mt-[9vh]   flex flex-row justify-center flex-wrap ">
+        <div className=" pt-[3vh]">
         <MainProductCard></MainProductCard>
+        </div>
+        <div className="pl-[3vw] pt-[3vh]">
         <MainProductCard></MainProductCard>
+        </div>
+      
+        <div className="pl-[3vw] pt-[3vh] ">
         <MainProductCard></MainProductCard>
+        </div>
+      
+        <div className="pl-[3vw] pt-[3vh] ">
         <MainProductCard></MainProductCard>
+        </div>
+      
+
+        <div className="pl-[3vw] pt-[3vh]">
         <MainProductCard></MainProductCard>
+        </div>
+      
+        <div className="pl-[3vw] pt-[3vh]">
         <MainProductCard></MainProductCard>
+        </div>
+      
+        <div className="pl-[3vw] pt-[3vh]">
+        <MainProductCard></MainProductCard>
+        </div>
+        
+      
+        
     
       </div>
 

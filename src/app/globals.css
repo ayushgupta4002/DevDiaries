@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.font-cal {
-    font-family: var(--font-cal),ui-serif,Georgia,Cambria,times new roman,Times,serif;
+@font-face {
+  font-family: "sans";
+  src: url("/fonts/sans.otf")format("opentype");
+}
+.body {
+  font-family: "sans";
 }
