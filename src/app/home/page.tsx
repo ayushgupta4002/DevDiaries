@@ -18,6 +18,8 @@ function home() {
           <Product></Product>
           <Product></Product>
           <Product></Product>
+          <Product></Product>
+          <Product></Product>
         </div>
         <div className="mt-1 rounded-xl ml-8 mr-5 bg-[#DDF2FF] w-[35vw] h-fit pb-5">
           <div className="p-2 pl-6 text-xl font-semibold font-sans">

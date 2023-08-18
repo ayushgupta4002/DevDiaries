@@ -1,6 +1,8 @@
 import MainNav from "../Components/MainNav";
+import Product from "../Components/Product";
 import ProductCart from "../Components/ProductCart";
 import Link from "next/link";
+import SuggestedCard from "../Components/SuggestedCard";
 
 function cart() {
   return (
@@ -8,7 +10,7 @@ function cart() {
       <div className="bg-[#f2f2f2]">
         <MainNav></MainNav>
         <div className="container mx-auto m">
-          <div className="flex shadow-md pb-10">
+          <div className="flex pb-10">
             <div className="w-3/4 bg-white px-10 py-10">
               <div className="flex justify-between border-b pb-8">
                 <h1 className="font-semibold text-2xl">Shopping Cart</h1>
@@ -71,6 +73,22 @@ function cart() {
             </div>
           </div>
         </div>
+        <div className="mt-[2vh] text-center   font-medium  tracking-wide  font-mono  text-3xl	">
+        - Frequently Bought Together -
+      </div>
+
+      <div className="mt-[3vh]   flex flex-row justify-center flex-wrap ">
+        <div className="flex flex-row">
+          <div className=" flex flex-row  flex-wrap	mt-7 max-w-[63vw] ml-5">
+            <Product></Product>
+            <Product></Product>
+            <Product></Product>
+            <Product></Product>
+            <Product></Product>
+          </div>
+          
+        </div>
+      </div>
       </div>
     </div>
   );
