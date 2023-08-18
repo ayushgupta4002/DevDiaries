@@ -8,7 +8,7 @@ function cart() {
   return (
     <div>
       <div className="bg-[#f2f2f2]">
-        <MainNav></MainNav>
+        <MainNav />
         <div className="container mx-auto m">
           <div className="flex pb-10">
             <div className="w-3/4 bg-white px-10 py-10">
@@ -19,16 +19,13 @@ function cart() {
                 <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">
                   Product Details
                 </h3>
-                <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
+                <h3 className="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">
                   Price
                 </h3>
-                <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
+                <h3 className="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">
                   Total
                 </h3>
               </div>
-              <ProductCart></ProductCart>
-              <ProductCart></ProductCart>
-              <ProductCart></ProductCart>
               <ProductCart></ProductCart>
 
               <Link href="/home">
@@ -74,21 +71,20 @@ function cart() {
           </div>
         </div>
         <div className="mt-[2vh] text-center   font-medium  tracking-wide  font-mono  text-3xl	">
-        - Frequently Bought Together -
-      </div>
-
-      <div className="mt-[3vh]   flex flex-row justify-center flex-wrap ">
-        <div className="flex flex-row">
-          <div className=" flex flex-row  flex-wrap	mt-7 max-w-[63vw] ml-5">
-            <Product></Product>
-            <Product></Product>
-            <Product></Product>
-            <Product></Product>
-            <Product></Product>
-          </div>
-          
+          - Frequently Bought Together -
         </div>
-      </div>
+
+        <div className="mt-[3vh]   flex flex-row justify-center flex-wrap ">
+          <div className="flex flex-row">
+            <div className=" flex flex-row  flex-wrap	mt-7 max-w-[63vw] ml-5">
+              {/* <Product></Product>
+              <Product></Product>
+              <Product></Product>
+              <Product></Product>
+              <Product></Product> */}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ function ProductCart() {
           </div>
           <div className="flex flex-col justify-between ml-4 flex-grow">
             <span className="font-bold text-sm">Ayush Gupta</span>
-            <span className="text-red-500 text-xs">your Papa</span>
+            <span className="text-red-500 text-xs">Sbka Beta</span>
             <a
               href="#"
               className="font-semibold hover:text-red-500 text-gray-500 text-xs"

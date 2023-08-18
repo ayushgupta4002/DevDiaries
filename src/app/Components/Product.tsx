@@ -1,18 +1,30 @@
-function Product() {
+import { ProductType } from "@/utils/types";
+import Image from "next/image";
+
+interface ProductProps {
+  product: ProductType;
+}
+
+function Product({ product }: ProductProps) {
   return (
     <div className="p-3">
       <div className="w-[19vw] bg-white border border-gray-200 rounded-lg mb-7  shadow ">
-        <a href="#">
-          <img className="rounded-t-lg w-fit " src="/delivery.png" alt="" />
-        </a>
+        <div className="relative h-[28vh]  rounded-t-xl overflow-hidden">
+          <Image
+            src={product.imgLink}
+            alt=""
+            layout="fill"
+            objectFit={"cover"}
+          />
+        </div>
         <div className="p-1">
           <a href="#">
             <h5 className="mb-2 text-md font-bold tracking-tight text-gray-900 ">
-              Noteworthy technology acquisitions 2021
+              {product.item}
             </h5>
           </a>
           <p className="mb-3 text-sm font-normal text-gray-700 ">
-            Here are the biggest enterprise
+            ₹ {product.price}
           </p>
           <a
             href="#"
@@ -28,8 +40,8 @@ function Product() {
             >
               <path
                 stroke="currentColor"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
