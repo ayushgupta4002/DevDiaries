@@ -3,6 +3,8 @@ import styles from "./Home.module.css";
 import MainNav from "./Components/MainNav";
 import MainBanner from "./Components/MainBanner";
 import MainProductCard from "./Components/MainProductCard";
+import Product from "./Components/Product";
+import SuggestedCard from "./Components/SuggestedCard";
 export default function Home() {
   return (
     <main className="flex min-h-screen bg-[#f2f2f2] flex-col ">
@@ -10,9 +12,9 @@ export default function Home() {
       <MainBanner></MainBanner>
 
       <div>
-        <div className="text-8xl  tracking-wide font-bold font-sans drop-shadow-2xl shadow-black pl-[3vw]">
+        <div className="text-8xl text-[#312E81]  tracking-wide font-bold font-sans drop-shadow-2xl shadow-black pl-[3vw]">
           Your One Stop{" "}
-          <span className="text-white drop-shadow-[0_1.2px_1.2px_rgba(0.8,0,0,0.8)]">
+          <span className="text-[#312E81] drop-shadow-[0_1.2px_1.2px_rgba(0.8,0,0,0.8)]">
             Solution
           </span>{" "}
           !!
@@ -24,35 +26,31 @@ export default function Home() {
       </div>
 
       <div className="mt-[9vh]   flex flex-row justify-center flex-wrap ">
-        <div className=" pt-[3vh]">
-        <MainProductCard></MainProductCard>
+      <div className="flex flex-row">
+        <div className=" flex flex-row  flex-wrap	mt-7 max-w-[63vw] ml-5">
+          <Product></Product>
+          <Product></Product>
+          <Product></Product>
+          <Product></Product>
+          <Product></Product>
+          
         </div>
-        <div className="pl-[3vw] pt-[3vh]">
-        <MainProductCard></MainProductCard>
-        </div>
-      
-        <div className="pl-[3vw] pt-[3vh] ">
-        <MainProductCard></MainProductCard>
-        </div>
-      
-        <div className="pl-[3vw] pt-[3vh] ">
-        <MainProductCard></MainProductCard>
-        </div>
-      
+        <div className="mt-1 rounded-xl ml-8 mr-5 bg-[#DDF2FF] w-[35vw] h-fit pb-5">
+          <div className="p-2 pl-6 text-xl font-semibold font-sans">
+           Your Cart
+           </div>
+          <div className="pt-2">
+            <SuggestedCard></SuggestedCard>
+            <SuggestedCard></SuggestedCard>
+            <SuggestedCard></SuggestedCard>
+            <SuggestedCard></SuggestedCard>
+            <SuggestedCard></SuggestedCard>
+            <SuggestedCard></SuggestedCard>
 
-        <div className="pl-[3vw] pt-[3vh]">
-        <MainProductCard></MainProductCard>
+          </div>
+          
         </div>
-      
-        <div className="pl-[3vw] pt-[3vh]">
-        <MainProductCard></MainProductCard>
-        </div>
-      
-        <div className="pl-[3vw] pt-[3vh]">
-        <MainProductCard></MainProductCard>
-        </div>
-        
-      
+      </div>
         
     
       </div>

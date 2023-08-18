@@ -3,11 +3,12 @@ import Banner from "../Components/Banner";
 import Product from "../Components/Product";
 import SuggestedCard from "../Components/SuggestedCard";
 import Navbar from "../Components/Navbar";
+import MainNav from "../Components/MainNav";
 function home() {
   return (
-    <div className="h-fit">
-      <Navbar></Navbar>
-      <Banner></Banner>
+    <div className="h-fit bg-[#f2f2f2]">
+<MainNav></MainNav>    
+  <Banner></Banner>
       <div className="flex flex-row">
         <div className=" flex flex-row justify-between flex-wrap	mt-7 max-w-[63vw] ml-5">
           <Product></Product>

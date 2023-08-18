@@ -2,7 +2,7 @@
 function SuggestedCard() {
   return (
     <div>
-      <div className="flex flex-row  ">
+      <div className="flex flex-row mt-3 ">
         <div className="mt-3 pl-4 ">
           <img
             className="w-12 rounded pb-1 md:pl-1 md:w-8 cursor-pointer"

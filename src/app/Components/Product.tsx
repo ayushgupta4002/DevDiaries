@@ -1,6 +1,6 @@
 function Product() {
   return (
-    <div>
+    <div className="p-3">
       <div className="w-[19vw] bg-white border border-gray-200 rounded-lg mb-7  shadow ">
         <a href="#">
           <img className="rounded-t-lg w-fit " src="/delivery.png" alt="" />
@@ -28,7 +28,6 @@ function Product() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
                 d="M1 5h12m0 0L9 1m4 4L9 9"
