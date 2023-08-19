@@ -16,7 +16,7 @@ function MainBanner() {
       <div className="w-1/2 flex justify-center items-center ml-[7vw]  mr-[5vw] rounded-2xl">
         <div className=" pb-5 ">
           <Image
-            src="/flipimage3.png"
+            src="/flipimage4.png"
             alt="Vercel Logo"
             className="dark:invert"
             width={500}

@@ -20,12 +20,11 @@ function MainNav() {
             {" "}
             <div className=" ml-5 text-lg font-medium">Products</div>
           </Link>
-          <Link href="/cart">
-            <div className="  text-lg font-medium">Cart</div>
-          </Link>
-
           <Link href="/">
             <div className="  text-lg font-medium">Home</div>
+          </Link>
+          <Link href="/cart">
+            <div className="  text-lg font-medium">Cart</div>
           </Link>
           <a href="mailto:ayush4002gupta@gmail.com">
             {" "}
