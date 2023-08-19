@@ -51,7 +51,7 @@ function cart() {
                   Shipping
                 </label>
                 <select className="block p-2 text-gray-600 w-full text-sm">
-                  <option>Standard shipping - $10.00</option>
+                  <option>Standard shipping -  ₹ 10.00</option>
                 </select>
               </div>
 
@@ -61,7 +61,7 @@ function cart() {
               <div className="border-t mt-8">
                 <div className="flex font-semibold justify-between py-6 text-sm uppercase">
                   <span>Total cost</span>
-                  <span>$600</span>
+                  <span> ₹ 600</span>
                 </div>
                 <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
                   Checkout

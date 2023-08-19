@@ -71,7 +71,7 @@ function Product({ product }: ProductProps) {
             ₹ {product.price}
           </p>
           <a
-            href={`/product/${product.item}`}
+            href={`/product/${encodeURIComponent(product.item)}`}
             className="inline-flex items-center  px-2 py-2 text-sm font-medium text-center text-blue-700  rounded-lg hover:bg-blue-100 focus:ring-4 focus:outline-none focus:ring-blue-300 "
           >
             view

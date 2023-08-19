@@ -19,8 +19,8 @@ function ProductCart() {
           </div>
         </div>
 
-        <span className="text-center w-1/5 font-semibold text-sm">$400.00</span>
-        <span className="text-center w-1/5 font-semibold text-sm">$400.00</span>
+        <span className="text-center w-1/5 font-semibold text-sm"> ₹400.00</span>
+        <span className="text-center w-1/5 font-semibold text-sm"> ₹400.00</span>
       </div>
     </div>
   );

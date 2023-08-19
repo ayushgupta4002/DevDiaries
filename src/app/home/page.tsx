@@ -36,7 +36,7 @@ export default function Home() {
     }
   );
 
-  const productData: ProductType[] = [
+ const productData: ProductType[] = [
     {
       api: "New User",
       imgLink:
