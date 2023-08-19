@@ -5,9 +5,6 @@ import React from "react";
 import Image from "next/image";
 import { ProductType } from "@/utils/types";
 
-interface ProductProps {
-  item: string;
-};
 
 const productData: ProductType[] = [
   {
