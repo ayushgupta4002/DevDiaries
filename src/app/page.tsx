@@ -45,7 +45,7 @@ export default function Home() {
 
       <div className="mt-[9vh] flex flex-row justify-center flex-wrap">
         <div className="flex flex-row">
-          <div className=" flex flex-row flex-wrap mt-7 max-w-[63vw] ml-5">
+          <div className=" flex flex-row flex-wrap justify-center items-center  mt-7 max-w-[63vw] ml-5">
             {productData.map((product) => {
               return <Product key={product.item} product={product} />;
             })}
