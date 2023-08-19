@@ -3,7 +3,11 @@
 import MainNav from "@/app/Components/MainNav";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { ProductType } from "@/utils/types";
+import { ProductType, SuggestedType } from "@/utils/types";
+import axios from "axios";
+import SuggestedCard from "@/app/Components/SuggestedCard";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const productData: ProductType[] = [
   {
@@ -80,8 +84,9 @@ const productData: ProductType[] = [
   },
 ];
 
-export default function Product(params: any) {
+export default function ProductDesc(params: any) {
   const [cart, setCart] = useState<ProductType[]>([]);
+  const [pastProduct, setPastProduct] = useState<SuggestedType[]>([]);
 
   useEffect(() => {
     const cartString = localStorage.getItem("cart");
@@ -105,10 +110,22 @@ export default function Product(params: any) {
     }
   }
 
-  const item = params.params.id;
+  const item = (params.params ? params.params.id : "") as string;
   const selectedProduct = productData.find(
     (product) => encodeURIComponent(product.item) === item
   );
+
+  useEffect(() => {
+    axios
+      .get(API_URL + "/api/past/predict/" + selectedProduct?.item)
+      .then((response) => {
+        const data = response.data;
+        setPastProduct(Object.values(data));
+      })
+      .catch((error) => {
+        console.log("Error in fetching data", error);
+      });
+  }, [selectedProduct]);
 
   const buttonText = cart.some((item) => item.item === selectedProduct?.item)
     ? "Remove from Cart"
@@ -152,11 +169,25 @@ export default function Product(params: any) {
               <Image
                 src={`${selectedProduct?.imgLink}`}
                 alt="product img"
+                className="h-100 w-25"
                 width={400}
                 height={100}
                 priority
               />
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="mt-[9vh] text-center   font-medium  tracking-wide  font-mono  text-3xl	">
+        - Frequently bought together -
+      </div>
+
+      <div className="flex flex-row justify-center flex-wrap">
+        <div className="flex flex-row">
+          <div className=" flex flex-row flex-wrap justify-center items-center my-7 max-w-[63vw] ml-5">
+            {pastProduct.map((product) => {
+              return <SuggestedCard key={product.Name} product={product} />;
+            })}
           </div>
         </div>
       </div>
