@@ -5,3 +5,11 @@ export interface ProductType {
   price: string;
   size: string;
 }
+
+export interface SuggestedType {
+  ImgLink: string;
+  Name: string;
+  Price: string;
+  Size: string;
+  api: string;
+}

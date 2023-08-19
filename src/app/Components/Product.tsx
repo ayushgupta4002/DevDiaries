@@ -1,11 +1,33 @@
+"use client";
+
 import { ProductType } from "@/utils/types";
 import Image from "next/image";
+import { useState } from "react";
 
 interface ProductProps {
   product: ProductType;
 }
 
+// jugad for now
+// TODO: fix this
 function Product({ product }: ProductProps) {
+  const isLiked = (item: string) => {
+    let likedProductJson = localStorage.getItem("likedProduct");
+    return likedProductJson
+      ? JSON.parse(likedProductJson).includes(item)
+      : false;
+  };
+  const [liked, setLiked] = useState(isLiked(product.item));
+
+  const handleLike = (item: string) => {
+    if (isLiked(item)) {
+      localStorage.setItem("likedProduct", "");
+    } else {
+      localStorage.setItem("likedProduct", JSON.stringify(item));
+    }
+    setLiked(!liked);
+  };
+
   return (
     <div className="p-3">
       <div className="w-[19vw] bg-white border border-gray-200 rounded-lg mb-7  shadow ">
@@ -18,11 +40,19 @@ function Product({ product }: ProductProps) {
           />
         </div>
         <div className="p-1">
-          <a href="#">
-            <h5 className="mb-2 text-md font-bold tracking-tight text-gray-900 ">
-              {product.item}
-            </h5>
-          </a>
+          <div className="flex flex-row justify-between">
+            <a href="#">
+              <h5 className="mb-2 text-md font-bold tracking-tight text-gray-900 ">
+                {product.item}
+              </h5>
+            </a>
+            <button
+              className="text-gray-500 hover:text-red-500 text-2xl"
+              onClick={() => handleLike(product.item)}
+            >
+              {liked ? "♥" : "♡"}
+            </button>
+          </div>
           <p className="mb-3 text-sm font-normal text-gray-700 ">
             ₹ {product.price}
           </p>

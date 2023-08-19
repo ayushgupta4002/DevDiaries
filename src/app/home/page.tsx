@@ -1,12 +1,39 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Banner from "../Components/Banner";
 import Product from "../Components/Product";
 import SuggestedCard from "../Components/SuggestedCard";
 import Navbar from "../Components/Navbar";
 import MainNav from "../Components/MainNav";
+import axios from "axios";
 import { ProductType } from "@/utils/types";
+import { SuggestedType } from "@/utils/types";
 
-function home() {
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+export default function Home() {
+  const [suggestProductData, setSuggestedProductData] = useState<
+    SuggestedType[]
+  >([]);
+
+  useEffect(() => {
+    const likedProduct = localStorage.getItem("likedProduct") as string;
+    console.log(likedProduct);
+    const cleanString = likedProduct.replace(/"/g, "").replace(/\s+/g, "%20");
+    console.log(cleanString);
+    axios
+      .get(API_URL + "/api/user/predict/" + cleanString)
+      .then((response) => {
+        const data = response.data;
+        setSuggestedProductData(Object.values(data));
+      })
+      .catch((error) => {
+        console.log("Error in fetching data", error);
+      });
+  }, []);
+
   const productData: ProductType[] = [
     {
       api: "New User",
@@ -97,16 +124,12 @@ function home() {
             Suggested for you
           </div>
           <div>
-            <SuggestedCard />
-            <SuggestedCard />
-            <SuggestedCard />
-            <SuggestedCard />
-            <SuggestedCard />
+            {suggestProductData.map((product) => {
+              return <SuggestedCard key={product.Name} product={product} />;
+            })}
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-export default home;
