@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 function MainNav() {
   return (
-    <div className="flex flex-row ">
+    <div className="flex flex-row justify-between  ">
       <div className="px-[3vw] py-4 pointer">
         <Link href="/">
           <Image
@@ -16,7 +16,7 @@ function MainNav() {
         </Link>
       </div>
       <div className="flex justify-center items-center w-full cursor-pointer ">
-        <div className="bg-white w-[40vw] h-[9vh] rounded-3xl border-2 p-3 flex flex-row justify-between border-[#312E81] items-center">
+        <div className="bg-white w-[40vw] h-[9vh] rounded-3xl border-2 py-3 flex flex-row justify-between border-[#312E81] items-center">
           <Link href="/home">
             {" "}
             <div className=" ml-5 text-lg font-medium">Products</div>
@@ -34,6 +34,18 @@ function MainNav() {
           </a>
         </div>
       </div>
+      <div className="px-[3vw] py-4 pointer">
+        <Link href="/cart">
+          <Image
+            src="/cart.png"
+            alt="Vercel Logo"
+            className="dark:invert"
+            width={80}
+            height={28}
+            priority
+          />
+        </Link>
+        </div>
     </div>
   );
 }
