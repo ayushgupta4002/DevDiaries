@@ -12,10 +12,23 @@ import { ProductType } from "@/utils/types";
 import { SuggestedType } from "@/utils/types";
 import { useQuery } from "react-query";
 import queryClient from "@/utils/queryClient";
+import MainBanner from "../Components/MainBanner";
+import Banner2 from "../Components/Banner2";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const nextSlide = () => {
+    const nextIndex = (currentSlide + 1) % 2; // Adjust this based on the number of slides
+    setCurrentSlide(nextIndex);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    return () => clearInterval(interval);
+  }, [currentSlide]);
+
   const { data: suggestProductData } = useQuery<SuggestedType[]>(
     "suggestedProducts",
     // @ts-ignore
@@ -114,8 +127,33 @@ export default function Home() {
   if (!suggestProductData) {
     return (
       <div className="h-fit bg-[#f2f2f2]">
-        <MainNav></MainNav>
-        <Banner></Banner>
+      <MainNav></MainNav>
+      <div id="default-carousel" className="w-full" data-carousel="slide">
+        <div className="  rounded-lg ">
+          <div
+            className={`duration-700 ease-in-out ${
+              currentSlide === 0 ? "" : "hidden"
+            }`}
+            data-carousel-item
+          >
+            <Banner />
+          </div>
+          <div
+            className={`duration-700 ease-in-out ${
+              currentSlide === 1 ? "" : "hidden"
+            }`}
+            data-carousel-item
+          >
+            <Banner2 />
+          </div>
+        </div>
+        <div className="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+        
+        </div>
+        </div>
+       
+ 
+        
         <div className="flex flex-row">
           <div className=" flex flex-row justify-between flex-wrap	mt-7 max-w-[63vw] ml-5">
             {productData.map((product) => {
@@ -128,7 +166,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+        </div>
     );
   }
 
@@ -136,6 +174,7 @@ export default function Home() {
     <div className="h-fit bg-[#f2f2f2]">
       <MainNav></MainNav>
       <Banner></Banner>
+      
       <div className="flex flex-row">
         <div className=" flex flex-row justify-between flex-wrap	mt-7 max-w-[63vw] ml-5">
           {productData.map((product) => {
