@@ -10,29 +10,31 @@ import MainNav from "../Components/MainNav";
 import axios from "axios";
 import { ProductType } from "@/utils/types";
 import { SuggestedType } from "@/utils/types";
+import { useQuery } from "react-query";
+import queryClient from "@/utils/queryClient";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Home() {
-  const [suggestProductData, setSuggestedProductData] = useState<
-    SuggestedType[]
-  >([]);
+  const { data: suggestProductData } = useQuery<SuggestedType[]>(
+    "suggestedProducts",
+    // @ts-ignore
+    async () => {
+      const likedProduct = localStorage.getItem("likedProduct") as string;
 
-  useEffect(() => {
-    const likedProduct = localStorage.getItem("likedProduct") as string;
-    console.log(likedProduct);
-    const cleanString = likedProduct.replace(/"/g, "").replace(/\s+/g, "%20");
-    console.log(cleanString);
-    axios
-      .get(API_URL + "/api/user/predict/" + cleanString)
-      .then((response) => {
+      const cleanString = likedProduct.replace(/"/g, "").replace(/\s+/g, "%20");
+
+      try {
+        const response = await axios.get(
+          API_URL + "/api/user/predict/" + cleanString
+        );
         const data = response.data;
-        setSuggestedProductData(Object.values(data));
-      })
-      .catch((error) => {
+        return Object.values(data);
+      } catch (error) {
         console.log("Error in fetching data", error);
-      });
-  }, []);
+      }
+    }
+  );
 
   const productData: ProductType[] = [
     {
@@ -63,7 +65,7 @@ export default function Home() {
       api: "New User",
       imgLink:
         "https://res.cloudinary.com/shubh-sardana/image/upload/v1692333575/bottomwear/high_rise_jeans.png",
-      item: "High Rise Jeans",
+      item: "High Rise jeans",
       price: "900",
       size: "L",
     },
@@ -71,7 +73,7 @@ export default function Home() {
       api: "New User",
       imgLink:
         "https://res.cloudinary.com/shubh-sardana/image/upload/v1692333947/topwear/round_neck_sweater.jpg",
-      item: "Round neck sweater	",
+      item: "Round neck sweater",
       price: "960",
       size: "L",
     },
@@ -109,6 +111,27 @@ export default function Home() {
     },
   ];
 
+  if (!suggestProductData) {
+    return (
+      <div className="h-fit bg-[#f2f2f2]">
+        <MainNav></MainNav>
+        <Banner></Banner>
+        <div className="flex flex-row">
+          <div className=" flex flex-row justify-between flex-wrap	mt-7 max-w-[63vw] ml-5">
+            {productData.map((product) => {
+              return <Product key={product.item} product={product} />;
+            })}
+          </div>
+          <div className="mt-1 rounded-xl ml-8 mr-5 bg-[#DDF2FF] w-[35vw] h-fit pb-5">
+            <div className="p-2 pl-6 text-xl font-semibold font-sans">
+              Suggested for you
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="h-fit bg-[#f2f2f2]">
       <MainNav></MainNav>
@@ -124,6 +147,7 @@ export default function Home() {
             Suggested for you
           </div>
           <div>
+            {/* @ts-ignore */}
             {suggestProductData.map((product) => {
               return <SuggestedCard key={product.Name} product={product} />;
             })}

@@ -1,5 +1,7 @@
 "use client";
 
+import { useMutation } from "react-query";
+import queryClient from "@/utils/queryClient";
 import { ProductType } from "@/utils/types";
 import Image from "next/image";
 import { useState } from "react";
@@ -19,13 +21,25 @@ function Product({ product }: ProductProps) {
   };
   const [liked, setLiked] = useState(isLiked(product.item));
 
-  const handleLike = (item: string) => {
-    if (isLiked(item)) {
-      localStorage.setItem("likedProduct", "");
-    } else {
-      localStorage.setItem("likedProduct", JSON.stringify(item));
+  const likeMutation = useMutation(
+    // @ts-ignore
+    (item: string) => {
+      if (isLiked(item)) {
+        localStorage.setItem("likedProduct", "");
+      } else {
+        localStorage.setItem("likedProduct", JSON.stringify(item));
+      }
+      setLiked(!liked);
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("suggestedProducts");
+      },
     }
-    setLiked(!liked);
+  );
+
+  const handleLike = (item: string) => {
+    likeMutation.mutate(item);
   };
 
   return (
@@ -57,7 +71,7 @@ function Product({ product }: ProductProps) {
             ₹ {product.price}
           </p>
           <a
-            href="#"
+            href={`/product/${product.item}`}
             className="inline-flex items-center  px-2 py-2 text-sm font-medium text-center text-blue-700  rounded-lg hover:bg-blue-100 focus:ring-4 focus:outline-none focus:ring-blue-300 "
           >
             view
