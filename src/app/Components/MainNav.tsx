@@ -15,16 +15,13 @@ function MainNav() {
         </Link>
       </div>
       <div className="flex justify-center items-center w-full cursor-pointer ">
-        <div className="bg-white w-[40vw] h-[9vh] rounded-3xl border-2 py-3 flex flex-row justify-between border-[#312E81] items-center">
+        <div className="bg-white w-[25vw] h-[9vh] rounded-3xl border-2 flex flex-row justify-between border-[#312E81] items-center">
+          <Link href="/">
+            <div className="ml-5 text-lg font-medium">Home</div>
+          </Link>
           <Link href="/home">
             {" "}
-            <div className=" ml-5 text-lg font-medium">Products</div>
-          </Link>
-          <Link href="/">
-            <div className="  text-lg font-medium">Home</div>
-          </Link>
-          <Link href="/cart">
-            <div className="  text-lg font-medium">Cart</div>
+            <div className="text-lg font-medium">Shop</div>
           </Link>
           <a href="mailto:ayush4002gupta@gmail.com">
             {" "}

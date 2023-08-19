@@ -4,7 +4,6 @@ import styles from "./Home.module.css";
 import MainNav from "./Components/MainNav";
 import MainBanner from "./Components/MainBanner";
 import Product from "./Components/Product";
-import SuggestedCard from "./Components/SuggestedCard";
 import { ProductType } from "@/utils/types";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -39,11 +38,11 @@ export default function Home() {
           !!
         </div>
       </div>
-      <div className="mt-[9vh] text-center   font-medium  tracking-wide  font-mono  text-3xl	">
+      <div className="flex flex-col mt-[9vh] text-center   font-medium  tracking-wide  font-mono  text-3xl">
         - Highly Rated -
+        <span className="text-lg text-slate-600">Handpicked Just for you</span>
       </div>
-
-      <div className="mt-[9vh] flex flex-row justify-center flex-wrap">
+      <div className="mt-[3vh] flex flex-row justify-center flex-wrap">
         <div className="flex flex-row">
           <div className=" flex flex-row flex-wrap justify-center items-center  mt-7 max-w-[63vw] ml-5">
             {productData.map((product) => {
@@ -51,6 +50,7 @@ export default function Home() {
             })}
           </div>
         </div>
+        <section id="banner" className="section-m1" />
       </div>
     </main>
   );
