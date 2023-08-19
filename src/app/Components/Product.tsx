@@ -12,7 +12,7 @@ interface ProductProps {
 
 // jugad for now
 // TODO: fix this
-function Product({ product }: ProductProps) {
+export default function Product({ product }: ProductProps) {
   const isLiked = (item: string) => {
     let likedProductJson = localStorage.getItem("likedProduct");
     return likedProductJson
@@ -95,5 +95,3 @@ function Product({ product }: ProductProps) {
     </div>
   );
 }
-
-export default Product;

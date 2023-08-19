@@ -1,10 +1,9 @@
 "use client";
 
 import MainNav from "@/app/Components/MainNav";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { ProductType } from "@/utils/types";
-
 
 const productData: ProductType[] = [
   {
@@ -81,43 +80,78 @@ const productData: ProductType[] = [
   },
 ];
 
-function Product(params: any) {
-const item = params.params.id;
+export default function Product(params: any) {
+  const [cart, setCart] = useState<ProductType[]>([]);
+
+  useEffect(() => {
+    const cartString = localStorage.getItem("cart");
+    if (cartString) {
+      const cartArray: ProductType[] = JSON.parse(cartString);
+      setCart(cartArray);
+    }
+  }, []);
+
+  function handleClick(product: ProductType | undefined) {
+    const ifExists = cart.find((item) => item?.item === product?.item);
+
+    if (ifExists) {
+      const updatedCart = cart.filter((item) => item?.item !== product?.item);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      setCart(updatedCart);
+    } else {
+      const updatedCart = [...cart, product!];
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      setCart(updatedCart);
+    }
+  }
+
+  const item = params.params.id;
   const selectedProduct = productData.find(
-    (product) =>  encodeURIComponent(product.item) === item
+    (product) => encodeURIComponent(product.item) === item
   );
-  console.log(selectedProduct);
-  
+
+  const buttonText = cart.some((item) => item.item === selectedProduct?.item)
+    ? "Remove from Cart"
+    : "Add to Cart";
+
   return (
     <div className=" min-h-screen bg-[#f2f2f2]">
-      <MainNav></MainNav>
+      <MainNav />
       <div className="my-5 flex flex-row-reverse">
         <div className="flex flex-row-reverse ">
           <div className="w-[55vw] flex flex-col">
             <div className="text-2xl  pt-[10vh] font-sans	font-bold pl-[3vw] pr-[3vw] ">
-             {selectedProduct?.item}
+              {selectedProduct?.item}
             </div>
             <div className="text-2xl  pt-[3vh] font-sans	font-normal pl-[3vw] pr-[3vw] ">
-              <span className="font-semibold">Description</span> : FlipStore is your one stop Store to Get your favourite recommended Products.We know what you need !
+              <span className="font-semibold">Description</span> : FlipStore is
+              your one stop Store to Get your favourite recommended Products.We
+              know what you need !
             </div>
             <div className="text-2xl  pt-[3vh] font-sans	font-normal pl-[3vw] pr-[3vw] ">
-              <span className="font-semibold">Price</span> :  ₹ {selectedProduct?.price}
+              <span className="font-semibold">Price</span> : ₹{" "}
+              {selectedProduct?.price}
             </div>
             <div className="text-2xl  pt-[3vh] font-sans	font-normal pl-[3vw] pr-[3vw] ">
-              <span className="font-semibold">Size</span> : {selectedProduct?.size}
+              <span className="font-semibold">Size</span> :{" "}
+              {selectedProduct?.size}
             </div>
-            <div className="w-fit pl-[3vw] pr-[3vw] pt-[4vh]"> 
-            <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-              Add To Cart
-            </button>
+            <div className="w-fit pl-[3vw] pr-[3vw] pt-[4vh]">
+              <button
+                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+                onClick={() => {
+                  handleClick(selectedProduct);
+                }}
+              >
+                {buttonText}
+              </button>
             </div>
           </div>
           <div className="w-[40vw] pl-4 flex rounded-2xl">
             <div className=" pb-5 ">
               <Image
-                src="/flipimage2.png"
-                alt="Vercel Logo"
-                className="dark:invert"
+                src={`${selectedProduct?.imgLink}`}
+                alt="product img"
                 width={400}
                 height={100}
                 priority
@@ -129,5 +163,3 @@ const item = params.params.id;
     </div>
   );
 }
-
-export default Product;

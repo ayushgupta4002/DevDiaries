@@ -37,13 +37,12 @@ function MainNav() {
           <Image
             src="/cart.png"
             alt="Vercel Logo"
-            className="dark:invert"
             width={80}
             height={28}
             priority
           />
         </Link>
-        </div>
+      </div>
     </div>
   );
 }

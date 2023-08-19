@@ -1,10 +1,57 @@
+"use client";
+
 import MainNav from "../Components/MainNav";
 import Product from "../Components/Product";
 import ProductCart from "../Components/ProductCart";
 import Link from "next/link";
 import SuggestedCard from "../Components/SuggestedCard";
+import { useEffect, useState } from "react";
+import { ProductType } from "@/utils/types";
+import axios from "axios";
 
-function cart() {
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+export default function Cart() {
+  const [cart, setCart] = useState<ProductType[]>([]);
+  const [similarProduct, setSimilarProduct] = useState<ProductType>();
+
+  useEffect(() => {
+    const savedCart = localStorage.getItem("cart");
+
+    if (savedCart) {
+      try {
+        const parsedCart = JSON.parse(savedCart);
+
+        if (Array.isArray(parsedCart)) {
+          setCart(parsedCart);
+          console.log("Saved cart:", parsedCart);
+        } else {
+          console.error("Saved cart is not an array:", parsedCart);
+        }
+      } catch (error) {
+        console.error("Error parsing saved cart:", error);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (cart.length) {
+      const lastItem = cart[cart.length - 1];
+      const lastItemName = lastItem.item;
+
+      axios
+        .get(API_URL + "/api/similarProducts/predict/" + lastItemName)
+        .then((response) => {
+          const data = response.data;
+          console.log("Similar products:", data);
+          setSimilarProduct(data);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    }
+  }, [cart]);
+
   return (
     <div>
       <div className="bg-[#f2f2f2]">
@@ -26,7 +73,10 @@ function cart() {
                   Total
                 </h3>
               </div>
-              <ProductCart></ProductCart>
+              {Array.isArray(cart) &&
+                cart.map((product) => {
+                  return <ProductCart key={product.item} product={product} />;
+                })}
 
               <Link href="/home">
                 <div className="flex font-semibold text-indigo-600 text-sm mt-10">
@@ -51,7 +101,7 @@ function cart() {
                   Shipping
                 </label>
                 <select className="block p-2 text-gray-600 w-full text-sm">
-                  <option>Standard shipping -  ₹ 10.00</option>
+                  <option>Standard shipping - ₹ 10.00</option>
                 </select>
               </div>
 
@@ -61,7 +111,7 @@ function cart() {
               <div className="border-t mt-8">
                 <div className="flex font-semibold justify-between py-6 text-sm uppercase">
                   <span>Total cost</span>
-                  <span> ₹ 600</span>
+                  {cart.length > 0 && <span>{cart[0].price}</span>}
                 </div>
                 <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
                   Checkout
@@ -71,17 +121,13 @@ function cart() {
           </div>
         </div>
         <div className="mt-[2vh] text-center   font-medium  tracking-wide  font-mono  text-3xl	">
-          - Frequently Bought Together -
+          - Similar Choices -
         </div>
 
         <div className="mt-[3vh]   flex flex-row justify-center flex-wrap ">
           <div className="flex flex-row">
             <div className=" flex flex-row  flex-wrap	mt-7 max-w-[63vw] ml-5">
-              {/* <Product></Product>
-              <Product></Product>
-              <Product></Product>
-              <Product></Product>
-              <Product></Product> */}
+              {similarProduct && <Product product={similarProduct} />}
             </div>
           </div>
         </div>
@@ -89,5 +135,3 @@ function cart() {
     </div>
   );
 }
-
-export default cart;
