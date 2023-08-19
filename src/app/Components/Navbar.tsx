@@ -8,7 +8,6 @@ function Navbar() {
         <Image
           src="/flipkart.jpg"
           alt="Vercel Logo"
-          className="dark:invert"
           width={130}
           height={28}
           priority

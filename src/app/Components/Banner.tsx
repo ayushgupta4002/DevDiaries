@@ -6,7 +6,6 @@ function Banner() {
         <Image
           src="/delivery2.png"
           alt="Vercel Logo"
-          className="dark:invert"
           width={400}
           height={40}
           priority

@@ -18,7 +18,6 @@ function MainBanner() {
           <Image
             src="/flipimage4.png"
             alt="Vercel Logo"
-            className="dark:invert"
             width={500}
             height={100}
             priority
