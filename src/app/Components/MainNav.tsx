@@ -8,7 +8,6 @@ function MainNav() {
           <Image
             src="/fliplogo2.png"
             alt="Vercel Logo"
-            className="dark:invert"
             width={120}
             height={28}
             priority
