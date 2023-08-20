@@ -5,7 +5,10 @@ export interface ProductType {
   price: string;
   size: string;
 }
-
+export interface ProductDescription {
+  item: string;
+  description: string;
+}
 export interface SuggestedType {
   ImgLink: string;
   Name: string;
