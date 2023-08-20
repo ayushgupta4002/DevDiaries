@@ -7,6 +7,7 @@ import Product from "./Components/Product";
 import { ProductType } from "@/utils/types";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import TypingHeading from "./Components/TypingHeading";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -30,15 +31,12 @@ export default function Home() {
       <MainNav />
       <MainBanner />
       <div>
-        <div className="text-8xl text-[#312E81]  tracking-wide font-bold font-sans drop-shadow-2xl shadow-black pl-[3vw]">
-          Your One Stop{" "}
-          <span className="text-[#312E81] drop-shadow-[0_1.2px_1.2px_rgba(0.8,0,0,0.8)]">
-            Solution
-          </span>{" "}
-          !!
+        <div className="text-[#312E81]  tracking-wide font-bold font-sans drop-shadow-2xl shadow-black pl-[3vw]">
+          <TypingHeading />
         </div>
       </div>
-      <div className="flex flex-col mt-[9vh] text-center   font-medium  tracking-wide  font-mono  text-3xl">
+      <section id="banner" className="section-m1 mt-[9vh]" />
+      <div className="flex flex-col mt-[3vh] text-center   font-medium  tracking-wide  font-mono  text-3xl">
         - Highly Rated -
         <span className="text-lg text-slate-600">Handpicked Just for you</span>
       </div>
@@ -50,7 +48,6 @@ export default function Home() {
             })}
           </div>
         </div>
-        <section id="banner" className="section-m1" />
       </div>
     </main>
   );
