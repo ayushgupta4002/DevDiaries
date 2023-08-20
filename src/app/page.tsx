@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import styles from "./Home.module.css";
 import MainNav from "./Components/MainNav";
 import MainBanner from "./Components/MainBanner";
@@ -46,6 +46,34 @@ export default function Home() {
             {productData.map((product) => {
               return <Product key={product.item} product={product} />;
             })}
+          </div>
+        </div>
+      </div>
+      <div className="mt-[3vh] pb-[4vh]">
+        <div className="flex flex-row ">
+          <div className="ml-[20vw]">
+          <Image
+          src="/fliplogo3.png"
+          alt="Vercel Logo"
+          width={300}
+          height={40}
+          priority
+        />
+          </div>
+          <div className="pl-[5vw] flex flex-col w-[40vw]">
+            <div className="text-2xl font-semibold  text-[#312E81]  ">
+              FlipStore Knows What you Want !
+            </div>
+            <div className="text-medium text-lg pt-[2vh]">
+            We understand that your shopping preferences can change over time, and that's 
+            why our recommendation system is designed to be flexible. You can easily 
+            refine your preferences ensuring that our system continuously learns and improves to cater to your evolving needs.
+       </div>
+            <div className="text-medium text-lg pt-[2vh]">
+            Experience the future of online shopping with our personalized recommendation system. 
+            Say goodbye to guesswork and hello to a world of products perfectly curated for you. 
+            Join us now and discover the joy of shopping with confidence and convenience!
+            </div>
           </div>
         </div>
       </div>
