@@ -5,7 +5,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { QueryClientProvider } from "react-query";
 import queryClient from "@/utils/queryClient";
-
+import { ApolloProvider } from '@apollo/client';
+import clients from "./graph";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,15 +20,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <QueryClientProvider client={queryClient}>
+    <ApolloProvider client={clients}>
       <html>
         <body className={inter.className}>
-          <div className="min-h-screen">
+          <div className="max-w-screen bg-[#f2f2f2] overflow-hidden">
             {/* <Navbar></Navbar> */}
             {children}
           </div>
         </body>
       </html>
-    </QueryClientProvider>
+      </ApolloProvider>
   );
 }

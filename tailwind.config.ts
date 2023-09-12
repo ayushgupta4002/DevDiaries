@@ -20,25 +20,28 @@ const config: Config = {
 
       'xlg': {'max': '1243px'},
 
-      'mlg': {'max': '1025px'},
+      'mlg': {'max': '1052px'},
       // => @media (max-width: 1103px) { ... }
 
 
-      'xmd': {'max': '900px'},
+      'xmd': {'max': '950px'},
 
       'md': {'max': '767px'},
       // => @media (max-width: 767px) { ... }
-      'nm': {'max': '680px'},
+      'nm': {'max': '615px'},
+      'xnm':{'max':'878px'},
+      'xnmm':{'min':'878px'},
 
-      'xnm':{'max':'860px'},
-
-      'sm': {'max': '580px'},
-
+      'sm': {'max': '515px'},
       // => @media (max-width: 639px) { ... }
-      'xsml': {'max': '556px'},
+      'xsml': {'max': '538px'},
 
-      'xsm': {'max': '380px'},
-      'xssm': {'max': '340'},
+      'xsm': {'max': '460px'},
+      'xsms': {'max': '419px'},
+
+      'xssm': {'max': '395px'},
+      'xsssm': {'max': '335px'},
+
     },
     extend: {
       backgroundImage: {
