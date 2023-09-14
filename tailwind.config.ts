@@ -40,6 +40,7 @@ const config: Config = {
       'xsms': {'max': '419px'},
 
       'xssm': {'max': '395px'},
+      
       'xsssm': {'max': '335px'},
 
     },

@@ -9,7 +9,7 @@ import { useQuery } from '@apollo/client';
 import { gql } from 'graphql-tag';
 import { fetchHashnodeData } from "./hashnode";
 
- 
+ import Link from "next/link";
 
 export default function Home() {
   // const { loading, error, data } = useQuery(GET_USER_PUBLICATION);
@@ -73,6 +73,11 @@ export default function Home() {
             )}
           </div>
         </div>
+      </div>
+      <div className="h-fit mt-[10vh]  flex  items-center justify-center ">
+      <div className="flex flex-col rounded-lg p-[3vh]  border-[2px] border-black  mb-[5vh] w-[80vw] text-center xsms:text-sm  font-bold font-mono  text-base">
+      <Link href="https://twitter.com/Ayush3241"> -- Diary of a Developer by  @Ayush Gupta -- </Link>
+      </div>
       </div>
     </main>
   );
