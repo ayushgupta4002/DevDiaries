@@ -7,37 +7,44 @@ import TypingHeading from "./Components/TypingHeading";
 import BlogCard from "./Components/BlogCard";
 import { useQuery } from '@apollo/client';
 import { gql } from 'graphql-tag';
+import { fetchHashnodeData } from "./hashnode";
 
-const GET_USER_PUBLICATION = gql`
-  query GetUserPublication {
-    user(username: "satyampsoni") {
-      publication {
-        posts(page: 0) {
-          title
-          brief
-          coverImage
-          slug
-          cuid
-        }
-      }
-    }
-  }
-`;
+ 
 
 export default function Home() {
-  const { loading, error, data } = useQuery(GET_USER_PUBLICATION);
+  // const { loading, error, data } = useQuery(GET_USER_PUBLICATION);
   const [blogData, setBlogData] = useState<any>(null);
 
-  // Moved the useQuery hook to the top level of the component
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-    if (!loading && data) {
-      const posts = data.user.publication.posts;
-      console.log(posts);
-      setBlogData(posts);
-      console.log(blogData)
-    }
-  }, [loading, data]);
+    const graphqlQuery = `
+      query {
+        user(username: "satyampsoni") {
+          publication {
+            posts {
+              title
+              brief
+              coverImage
+              type
+              readTime
+            }
+          }
+        }
+      }
+    `;
+
+    fetchHashnodeData(graphqlQuery)
+      .then((result) => {
+        console.log(result);
+        setBlogData(result.user.publication.posts);
+      })
+      .catch((error) => {
+        // Handle errors here
+      });
+  }, []);
+
+
 
 
   return (
