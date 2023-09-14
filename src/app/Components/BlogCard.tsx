@@ -8,7 +8,7 @@ function BlogCard({ blogs }: any) {
     <div className=" rounded-2xl mt-[3vh]  w-fit xsm:h-[25vh] nm:h-[27vh] h-[30vh] xnm:mx-[0vw] mx-[50vw] ">
     <div className="flex flex-row  border-[1px] border-gray-600  rounded-2xl">
       <div className=' overflow-hidden ' >
-      <img src={blogs.coverImage} alt='Image Not Availabe' className=" w-[25vw] xssm:w-[70vw] nm:h-[27vh] xnm:w-[33vw]  nm:w-[43vw] xsm:h-[25vh]  sm:w-[25vh] h-[30vh] rounded-3xl p-2"></img>
+      <img src={blogs.coverImage} alt='Image Not Availabe' className=" w-[25vw] object-cover xssm:w-[70vw] nm:h-[27vh] xnm:w-[33vw]  nm:w-[43vw] xsm:h-[25vh]  sm:w-[45vw] h-[30vh] rounded-3xl p-2"></img>
 
       </div>
       <div className="p-1 pr-2  justify-center flex overflow-hidden  flex-col w-[65vw] ">
