@@ -59,7 +59,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col mt-[6vh] text-center   xsms:text-xl  font-medium  tracking-wide  font-mono  text-3xl">
         - Diary of a Developer -
-        <span className="text-lg text-slate-600">Its not just about Tech</span>
+        <span className="text-lg xsms:text-base text-slate-600">Its not just about Tech</span>
       </div>
       <div className="mt-[5vh] flex mx-5 flex-row justify-center flex-wrap">
         <div className="flex flex-row">
@@ -75,7 +75,7 @@ export default function Home() {
         </div>
       </div>
       <div className="h-fit mt-[10vh]  flex  items-center justify-center ">
-      <div className="flex flex-col rounded-lg p-[3vh]  border-[2px] border-black  mb-[5vh] w-[80vw] text-center xsms:text-sm  font-bold font-mono  text-base">
+      <div className="flex flex-col rounded-lg p-[3vh]  xsml:px-[1vw] border-[2px] border-black  mb-[5vh] w-[80vw] text-center xsms:text-xs  font-bold font-mono  text-base">
       <Link href="https://twitter.com/Ayush3241"> -- Diary of a Developer by  @Ayush Gupta -- </Link>
       </div>
       </div>

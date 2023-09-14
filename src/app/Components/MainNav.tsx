@@ -29,7 +29,7 @@ function MainNav() {
     <div className="p-[1vw] py-4 xnmm:ml-[85%] xnmm:absolute pointer xnm:flex xnm:justify-center xnm:items-center">
       <Link href="https://linktr.ee/NovusAyush">
         <div className="bg-black w-fit h-[9vh] rounded-xl border-2 flex flex-row border-black items-center">
-          <span className="text-sm xnmm:hidden py-3 px-7 xmd:px-4 text-white font-medium">Who The Hell Are you?</span>
+          <span className="text-sm xnmm:hidden py-3 px-7 xmd:px-4 text-white font-medium">Who is this Guy Button?</span>
           <span className="text-sm xnm:hidden py-3 px-7 xmd:px-4 text-white font-medium">Hi?</span>
 
         </div>
