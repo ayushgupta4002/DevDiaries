@@ -28,6 +28,7 @@ export default function Home() {
               coverImage
               type
               readTime
+              slug
             }
           }
         }
@@ -58,7 +59,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col mt-[6vh] text-center   xsms:text-xl  font-medium  tracking-wide  font-mono  text-3xl">
         - Diary of a Developer -
-        <span className="text-lg text-slate-600">It's not just about Tech</span>
+        <span className="text-lg text-slate-600">Its not just about Tech</span>
       </div>
       <div className="mt-[5vh] flex mx-5 flex-row justify-center flex-wrap">
         <div className="flex flex-row">
