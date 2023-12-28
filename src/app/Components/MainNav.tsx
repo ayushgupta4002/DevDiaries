@@ -26,8 +26,8 @@ function MainNav() {
       <div className="bg-white w-fit xsms:h-[10vh] h-[13vh] rounded-full border-2 flex flex-row border-black items-center">
         <div className="rounded-full">
           <Link href="/">
-            <img src="/icon.png" className="h-[11vh] xnm:h-[8vh] xsms:w-[13vw] xssm:w-[18vw] xsssm:w-[25vw] usm:w-[30vw] w-fit rounded-full ml-1" alt="Your Alt Text" />
-          </Link>
+            <img src="/icon.png" className="h-[11vh] xnm:h-[8vh] 	 xsms:w-[13vw] xssm:w-[18vw] xsssm:w-[25vw] usm:w-[30vw] w-fit rounded-full ml-1" alt="Your Alt Text" />
+          </Link>   
         </div>
         <div className="text-lg xsms:text-base font-mono xsssm:py-1 xsssm:text-sm  font-medium ml-3 mr-4 mlg:text-base">
          <b>$ sudo </b>Ayush welcomes you to Dev Diaries! 🚀🐧

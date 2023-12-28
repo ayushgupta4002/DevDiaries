@@ -20,7 +20,7 @@ export default function Home() {
   useEffect(() => {
     const graphqlQuery = `
       query {
-        user(username: "satyampsoni") {
+        user(username: "Ayush3241") {
           publication {
             posts {
               title
